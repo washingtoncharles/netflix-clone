@@ -28,7 +28,7 @@ const categories = [
   }
 ];
 
-export const getMovies = async (path) => {
+export const getMovies = async (path: string) => {
   
   try {
     const url = `https://api.themoviedb.org/3${path}`;
@@ -39,3 +39,5 @@ export const getMovies = async (path) => {
     console.log("error getMovies: ", error);
   } 
 }
+
+export default categories;
