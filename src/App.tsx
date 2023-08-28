@@ -1,10 +1,10 @@
-import { GlobalStyled } from "./assets/global"
+import HomePage from "./pages/home";
+import { GlobalStyled } from "./assets/global";
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
-
+      <HomePage />
       <GlobalStyled />
     </>
   )
