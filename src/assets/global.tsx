@@ -16,9 +16,9 @@ export const GlobalStyled = createGlobalStyle`
 
   --co-font: #0D0D0D;
 
-  --co-primary: ;
-  --co-secundary: ;
-  --co-tercuary: ;
+  --co-primary: #db0000;
+  --co-secundary: #831010;
+  --co-tercuary: #564d4d;
 }
 
 `
