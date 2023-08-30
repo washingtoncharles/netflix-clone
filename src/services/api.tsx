@@ -23,7 +23,7 @@ const categories = [
   },
   {
     name:'comedy',
-    title:'Comedia',
+    title:'Comédia',
     path:`/discover/tv?api_key=${API_KEY_TEST}&with_genres=35`,
   }
 ];
