@@ -5,26 +5,31 @@ const categories = [
     name:'trending',
     title:'Em alta',
     path:`/trending/all/week?api_key=${API_KEY_TEST}&language=pt-BR`,
+    isLarge:true,
   },
   {
     name:'netflixOriginals',
     title:'Originais Netflix',
     path:`/discover/tv?api_key=${API_KEY_TEST}&with_networks=213`,
+    isLarge:false,
   },
   {
     name:'topRated',
     title:'Populares',
     path:`/movie/top_rated?api_key=${API_KEY_TEST}&language=pt-BR`,
+    isLarge:false,
   },
   {
     name:'action',
     title:'Ação',
-    path:`/discover/tv?api_key=${API_KEY_TEST}&with_genres=28`,
+    path:`/discover/movie?api_key=${API_KEY_TEST}&with_genres=28`,
+    isLarge:false,
   },
   {
     name:'comedy',
     title:'Comédia',
     path:`/discover/tv?api_key=${API_KEY_TEST}&with_genres=35`,
+    isLarge:false,
   }
 ];
 

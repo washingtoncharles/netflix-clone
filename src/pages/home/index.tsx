@@ -12,6 +12,7 @@ export default function HomePage(){
             key={category.name}
             title={category.title}
             path={category.path}
+            isLarge={category.isLarge}
           />
         );
       })}
