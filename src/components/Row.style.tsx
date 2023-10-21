@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-left: 20px;
+  color: var(--co-font);
 
   .row-header {
     
