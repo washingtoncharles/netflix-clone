@@ -2,16 +2,25 @@ import React, { useEffect } from "react";
 import { Container } from "./Banner.style";
 import categories, { getMovies } from "../services/api";
 
-export default function Banner(){
-  const [movie, setMovie] = React.useState([]);
+interface MovieProps {
+  backdrop_path:  string;
+  title:          string;
+  name:           string;
+  original_name:  string;
+  overview:       string;
+}
+
+export default function Banner() {
+  const [movie, setMovie] = React.useState<MovieProps | null>(null);
   const fetchRandomMovie = async () => {
     try {
       const netflixOriginalsCategory = categories.find(
         (category) => category.name === "netflixOriginals"
       );
-      const data = await getMovies(netflixOriginalsCategory.path);
-      const randomIndex = Math.floor(Math.random() * data.results.length);
-      setMovie(data?.results[randomIndex]);
+      const data = await getMovies(netflixOriginalsCategory!.path);
+      const movies = data?.results;
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      setMovie(movies[randomIndex] as MovieProps);
 
     } catch (error) {
       console.log("error fetchRandomMovie: ", error);

@@ -1,20 +1,30 @@
 import React, { useEffect } from "react";
-import { getMovies } from "../services/api";
-import { Container } from "./Row.style";
 import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
+import { getMovies } from "../services/api";
+import { Container } from "./Row.style";
 
-export default function Row({title, path, isLarge}) {
-  const [movies, setMovies] = React.useState([]);
+interface MovieProps {
+  title:          string;
+  path:           string;
+  isLarge:        boolean;
+  name:           string;
+  original_name:  string;
+  poster_path:    string;
+  id:             number;
+}
+
+export default function Row({title, path, isLarge}:MovieProps) {
+  const [movies, setMovies] = React.useState<MovieProps | null>(null);
   const [trailerUrl, setTrailerUrl] = React.useState("");
 
   //PEGAR URL DO TRAILER COM ACAO DE CLICK
-  const handleOnClick = (movie) => {
+  const handleOnClick = (movie: MovieProps) => {
     if (trailerUrl) { //CONDIÇÃO PARA FECHAR O VIDEO
       setTrailerUrl("");
     } else { //CONDIÇÃO PARA ABRE O VIDEO
       movieTrailer(movie.title || movie.name || movie.original_name || "")
-        .then((url) => {
+        .then((url: string) => {
           setTrailerUrl(url);
           //setTrailerUrl("https://www.youtube.com/watch?v=ZnZqB5Z75zI"); 
 
@@ -25,7 +35,7 @@ export default function Row({title, path, isLarge}) {
     }
   }
 
-  const fetchMovies = async (_path) => {
+  const fetchMovies = async (_path: string) => {
     try {
       const data = await getMovies(_path);
       console.log("data: ", data);
@@ -44,7 +54,7 @@ export default function Row({title, path, isLarge}) {
     <Container>
       <h2 className="row-header">{title}</h2>
       <div className="row-cards">
-        {movies?.map((movie) => {
+        {movies?.map((movie: MovieProps) => {
           return (
             <img 
               className={isLarge ? "movie-card-large" : "movie-card"}
@@ -55,7 +65,7 @@ export default function Row({title, path, isLarge}) {
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
               alt={movie.name} 
             ></img>
-          )
+          );
         })}
       </div>
       {trailerUrl && <ReactPlayer playing={true} url={trailerUrl} />}
