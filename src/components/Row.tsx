@@ -15,8 +15,8 @@ interface MovieProps {
 }
 
 export default function Row({title, path, isLarge}:MovieProps) {
-  const [movies, setMovies] = React.useState<MovieProps | null>(null);
-  const [trailerUrl, setTrailerUrl] = React.useState("");
+  const [movies, setMovies] = React.useState<MovieProps[]>([]);
+  const [trailerUrl, setTrailerUrl] = React.useState<string | null>("");
 
   //PEGAR URL DO TRAILER COM ACAO DE CLICK
   const handleOnClick = (movie: MovieProps) => {
@@ -29,7 +29,7 @@ export default function Row({title, path, isLarge}:MovieProps) {
           //setTrailerUrl("https://www.youtube.com/watch?v=ZnZqB5Z75zI"); 
 
         })
-        .catch((error) => {
+        .catch((error: Error) => {
           console.log("Error fetching movie trailer: ", error);
         });
     }
