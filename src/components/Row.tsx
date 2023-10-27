@@ -5,13 +5,14 @@ import { getMovies } from "../services/api";
 import { Container } from "./Row.style";
 
 interface MovieProps {
-  title:          string;
-  path:           string;
-  isLarge:        boolean;
-  name:           string;
-  original_name:  string;
-  poster_path:    string;
-  id:             number;
+  title: string;
+  path: string;
+  isLarge: boolean;
+  name: string;
+  original_name: string;
+  poster_path: string;
+  id: number;
+  key: string;
 }
 
 export default function Row({title, path, isLarge}:MovieProps) {
